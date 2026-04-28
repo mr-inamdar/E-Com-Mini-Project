@@ -289,3 +289,150 @@ nav {
     border-radius: 8px;
     font-size: 14px;
 }
+
+/* =========================================
+   PREMIUM "APPLE-STYLE" UI OVERRIDES
+   ========================================= */
+
+/* 1. Frosted Glass Navigation */
+nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none; /* Removes harsh shadow for a cleaner look */
+}
+
+/* 2. Fluid Image Cards (Overrides previous fixed dimensions) */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03); /* Subtle zoom effect */
+}
+
+/* 3. Premium Input Fields */
+.hero input, .address-form input, .address-form textarea, #loginModal input {
+  background-color: #f5f5f7; /* Apple-style light gray */
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.hero input:focus, .address-form input:focus, .address-form textarea:focus, #loginModal input:focus {
+  background-color: #ffffff;
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.15); /* Soft focus ring */
+  outline: none;
+}
+
+/* 4. Filter Buttons Flex-Wrap */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.filters button {
+  margin: 0; 
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-weight: 500;
+  box-shadow: none;
+}
+.filters button:hover {
+  background: var(--primary);
+  color: white;
+}
+
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* Tablets and smaller laptops (Max 900px) */
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 30px 20px;
+    gap: 20px;
+  }
+}
+
+/* Tablets (Max 768px) */
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 12px 20px;
+  }
+  .hero {
+    padding: 110px 20px 40px; /* Extra top padding so glass nav doesn't overlap text */
+  }
+}
+
+/* Mobile Phones (Max 480px) */
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 10px 15px;
+  }
+  
+  .logo {
+    height: 28px; /* Scale down logo */
+  }
+  
+  .nav-right {
+    gap: 8px;
+  }
+  
+  .normal, .cart {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .hero input {
+    width: 100%;
+    max-width: 100%; /* Search bar takes full width */
+  }
+  
+  .grid {
+    /* Uses a 2-column layout for small items, or falls back to 1 for tiny screens */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .card img {
+    height: 160px; /* Smaller images to fit 2-column mobile view */
+  }
+  
+  .modal-content, .payment-content {
+    width: 95%;
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  /* Stack City and Pincode on very small screens */
+  .address-form div[style*="display:flex"] {
+    flex-direction: column;
+    gap: 0;
+  }
+  .address-form div[style*="display:flex"] input {
+    margin-bottom: 10px;
+  }
+}
